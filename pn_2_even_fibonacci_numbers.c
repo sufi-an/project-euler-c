@@ -12,7 +12,7 @@
  *  3. create array_sum function
  */
 #include <stdio.h>
-
+#include "linked_list.h"
 
 int str_to_int(char *s){
   int i=0;
@@ -49,10 +49,12 @@ int generate_fibonacci_to_n(int n){
 
 int main(int argc, char *argv[])
 {
+  struct Node *head = NULL;
+
   int n  = str_to_int(argv[1]);
-  int *arr = generate_fibonacci_to_n(n);
-  int *filtured_arr = get_xs_denominators_list(arr,2);
-  int sum = array_sum(filtured_arr);
+  generate_fibonacci_to_n_list(&head,n);
+  get_xs_denominators_list(&head,2);
+  int sum = array_sum(head);
   printf("%d\n",sum);
   
   return 0 ;
